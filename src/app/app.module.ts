@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { TkSizeModule } from '../';
+import { TkSizeModule } from '../../';
 import { AppComponent } from './app.component';
 
 @NgModule({
