@@ -1,16 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { TkSizeModule } from '../../';
+import { TkSizeModule, TkImageModule, TkLazyElModule } from '../../';
 import { AppComponent } from './app.component';
+import { TkDummyComponent } from './dummy.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TkDummyComponent
   ],
   imports: [
     BrowserModule,
-    TkSizeModule
+    TkSizeModule,
+    TkImageModule,
+    TkLazyElModule
   ],
   providers: [],
   bootstrap: [AppComponent]

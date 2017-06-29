@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  
+  public title = 'app';
+  public list:any[] = [];
+
+  constructor() {
+    for (var i = 0; i < 800; i++) {
+      this.list.push(i);
+    }
+  }
+
 }
