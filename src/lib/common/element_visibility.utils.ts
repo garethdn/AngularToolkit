@@ -1,11 +1,11 @@
 export class ElementVisibilityUtils {
 
-    public static createElementObserver(cb:IntersectionObserverCallback):IntersectionObserver {
-        return new IntersectionObserver(cb.bind(this), {
+    public static createElementObserver(cb:IntersectionObserverCallback, options:IntersectionObserverInit = {}):IntersectionObserver {
+        return new IntersectionObserver(cb.bind(this), Object.assign({
             root: null,
             rootMargin: '0px',
             threshold: 0
-        });
+        }, options));
     }
 
     public static observe(observer:IntersectionObserver, el:Element):IntersectionObserver {

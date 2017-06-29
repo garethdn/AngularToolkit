@@ -10,11 +10,17 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class TkLazyElDirective implements OnInit {
 
-    @Input() destroyOnHidden: boolean = false;
+    @Input() tkLazyEl: IntersectionObserverInit = {};
+    @Input('tkLazyElDestroy') destroyOnHidden: boolean = false;
 
     private _observer: IntersectionObserver;
     private _hasView: boolean = false;
     private _observerSupported = window['IntersectionObserver'];
+    private _defaultOptions:IntersectionObserverInit = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0
+    }
 
     constructor(
         private _templateRef: TemplateRef<any>,
@@ -25,8 +31,10 @@ export class TkLazyElDirective implements OnInit {
     }
 
     ngOnInit() {
+        Object.assign(this._defaultOptions, this.tkLazyEl);
+
         if (this._observerSupported) {
-            this._observer = ElementVisibilityUtils.createElementObserver(this._toggle.bind(this));
+            this._observer = ElementVisibilityUtils.createElementObserver(this._toggle.bind(this), this._defaultOptions);
             this._observer.observe(this._elRef.nativeElement.parentElement);
         }
         else {
