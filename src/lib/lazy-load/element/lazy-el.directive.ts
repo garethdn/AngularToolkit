@@ -46,6 +46,7 @@ export class TkLazyElDirective implements OnInit {
         entries.forEach(e => {
             if (e['isIntersecting'] && !this._hasView) {
                 this._embedView();
+                this._chRef.markForCheck();
                 this._chRef.detectChanges();
 
                 if (!this.destroyOnHidden) {
